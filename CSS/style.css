@@ -8,8 +8,7 @@
     flex-direction: column;
 }
 
-section {
-    
+section {  
     margin: 0;
     padding: 10px ;
     display: grid;
@@ -23,4 +22,52 @@ div .cell {
     background-color: pink;
     /*background-image: url(/pictures/shirt_card.jpg);
     background-size: contain;  */ 
+}
+.front {
+    background-color: pink;
+}
+
+.back {
+    background-color: black;
+}
+/* весь контейнер поддерживает перспективу */
+.flip-container {
+    perspective: 1000;
+   }
+    
+.flip-container.flip .flipper {
+    transform: rotateY(180deg);
+}
+    
+.flip-container, .front, .back {
+    width: 20px;
+    height: 20px;
+}
+   
+   /* здесь находится скорость перевертывания */
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+   
+    position: relative;
+}
+   
+   /* скройте обратную сторону во время переворота */
+.front, .back {
+    backface-visibility: hidden;
+   
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+   
+   /* лицевая сторона размещена над обратной */
+.front {
+    z-index: 2;
+    pointer-events: none;
+}    
+   
+   /* обратная, изначально скрытая сторона */
+.back {
+    transform: rotateY(180deg);
 }
