@@ -1,41 +1,34 @@
 let cell = document.getElementsByClassName('cell');
-console.log('cell: ', cell.length);
 let mahjongField = document.querySelector('.mahjong_field');
 
-let sumCell = cell.length;
-let amountPair = sumCell / 2;
-let arrayPairs = [];
-
-function generatedArrayPairs(arrayPairs) {
+function generatedArrayPairs() {
     let k = 0;
+    let arrayPairs = [];
     while (k < cell.length / 2) {
         arrayPairs.push(k);
         arrayPairs.push(k);
         k++;
     }
+    return arrayPairs;
 };
-
-generatedArrayPairs(arrayPairs);
 
 function j() {
     let i = 0;
-    while ( i <= cell.length ) {
+    let arrayPairs = generatedArrayPairs();
+    console.log('arrayPairs: ', arrayPairs);
+    while ( i < cell.length ) {
         let cardNumber = allocation();
         let cellNumber = document.createElement('div.card');
         cellNumber.innerText = arrayPairs[i];
         cell[cardNumber].appendChild(cellNumber);
-        i++;
+        i++; 
     }
 };
 
 function allocation() {
-    let generatedNumberCard = getRandomInt(19);
-    if (cell[generatedNumberCard].firstChild != null ){
-        return allocation();
-    }
-    else {
-        return generatedNumberCard;
-    }
+    let generatedNumberCard = getRandomInt(20);
+    if (cell[generatedNumberCard].firstChild != null ) return allocation();  
+    return generatedNumberCard;
 }
 
 j();
