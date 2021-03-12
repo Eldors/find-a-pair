@@ -29,6 +29,8 @@ div .cell {
 
 .back {
     background-color: black;
+    color: white;
+    text-align: center;
 }
 /* весь контейнер поддерживает перспективу */
 .flip-container {

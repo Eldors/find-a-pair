@@ -1,12 +1,12 @@
-let cell = document.getElementsByClassName('cell');
-let mahjongField = document.querySelector('.mahjong_field');
+'use strict'
+
 let test = document.querySelector('.test');
 let flipContainer = document.querySelectorAll('.test .flip-container');
 
 function generatedArrayPairs() {
     let k = 0;
     let arrayPairs = [];
-    while (k < cell.length / 2) {
+    while (k < flipContainer.length / 2) {
         arrayPairs.push(k);
         arrayPairs.push(k);
         k++;
@@ -17,18 +17,16 @@ function generatedArrayPairs() {
 function j() {
     let i = 0;
     let arrayPairs = generatedArrayPairs();
-    while ( i < cell.length ) {
+    while ( i < flipContainer.length ) {
         let cardNumber = allocation();
-        let cellNumber = document.createElement('div.card');
-        cellNumber.innerText = arrayPairs[i];
-        cell[cardNumber].appendChild(cellNumber);
+        flipContainer[cardNumber].firstElementChild.lastElementChild.innerText = arrayPairs[i];
         i++; 
     }
 };
 
 function allocation() {
     let generatedNumberCard = getRandomInt(20);
-    if (cell[generatedNumberCard].firstChild != null ) return allocation();  
+    if(flipContainer[generatedNumberCard].firstElementChild.lastElementChild.textContent != '') return allocation();
     return generatedNumberCard;
 }
 
@@ -38,23 +36,13 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 };
 
-function openCard(event) {
-    if (!event.target.matches('section.mahjong_field div.cell')) return
-    let clickCell = event.target;
-    clickCell.classList.toggle('open_Card'); 
-};
-
 function flipCard(event) {
     if(!event.target.matches('section.test div.flip-container')) return;
-    let t = event.target;
     event.target.classList.toggle('flip');
-    setTimeout(function (){ t.classList.toggle('flip')}, 1000, t);
+    setTimeout(function (){ event.target.classList.toggle('flip')}, 2000, event.target);
 }
 
-
-
 test.addEventListener('click', flipCard);
-mahjongField.addEventListener('click', openCard);
 
 let shirtCard = document.querySelector('img');
 
