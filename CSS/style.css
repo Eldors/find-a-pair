@@ -1,8 +1,9 @@
 .main{
+    margin: 1em;
+    padding: 10px;
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: red;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -12,17 +13,12 @@ section {
     margin: 0;
     padding: 10px ;
     display: grid;
-    grid-template-columns: repeat(5, 20px);
-    grid-template-rows: repeat(4, 20px);
+    grid-template-columns: repeat(5, 50px);
+    grid-template-rows: repeat(4, 50px);
     gap: 2px;
     background-color: silver;
 }
 
-div .cell {
-    background-color: pink;
-    /*background-image: url(/pictures/shirt_card.jpg);
-    background-size: contain;  */ 
-}
 .front {
     background-color: pink;
 }
@@ -35,15 +31,16 @@ div .cell {
 /* весь контейнер поддерживает перспективу */
 .flip-container {
     perspective: 1000;
-   }
+    position: relative;
+}
     
 .flip-container.flip .flipper {
     transform: rotateY(180deg);
 }
     
 .flip-container, .front, .back {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
 }
    
    /* здесь находится скорость перевертывания */
@@ -71,5 +68,16 @@ div .cell {
    
    /* обратная, изначально скрытая сторона */
 .back {
+    font-size: 3em;
+    text-align: center;
     transform: rotateY(180deg);
+}
+
+.open {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    /*font-size: 3em;*/
 }
