@@ -53,20 +53,23 @@ function comparisonOfNumberCard(card) {
     let openCard = document.querySelector('.flip-container.flip');
     if(openCard != null) {
         card.classList.add('flip');
+        console.log(card);
         if(openCard.firstElementChild.lastElementChild.textContent == card.firstElementChild.lastElementChild.textContent) {
-            /*openCard.classList.add('open');
-            card.classList.add('open');            */
             let a = document.createElement('div');
+            let b = document.createElement('div');
+            a.classList.add('open');
+            b.classList.add('open');
             a.textContent = openCard.firstElementChild.lastElementChild.textContent;
-            //console.log('a.textContent: ', a.textContent);
-            //a.classList.add('open');
-            openCard.classList.add('open');
-            card.classList.add('open');
-            //openCard.insertBefore(a, openCard.firstElementChild);
-            //openCard.classList.add('open');
-            //openCard.classList.remove('flip');
-            //card.insertBefore(a, card.firstElementChild); 
-
+            b.textContent = card.firstElementChild.lastElementChild.textContent;
+            setTimeout(function() {
+                if(openCard.childElementCount < 2)    openCard.appendChild(a);
+                openCard.firstElementChild.remove();
+            }, 500);
+            setTimeout(function() {
+                if(card.childElementCount < 2)      card.appendChild(b);
+                card.firstElementChild.remove();
+            }, 500);
+            card.classList.remove('flip');
         }
         else {
             card.classList.add('flip');
@@ -78,7 +81,7 @@ function comparisonOfNumberCard(card) {
     }
     else {
         card.classList.add('flip');
-        setTimeout(function (){ card.classList.remove('flip')}, 2000);
+        setTimeout(function (){ card.classList.remove('flip')}, 1000);
     }
 };
 
